@@ -13,7 +13,10 @@ language: `JP` or `EN`
 
 ## install
 
+PowerShell
+
 ```
+cd .\ToF_auto_leveling
 pip install -r requirements.txt
 ```
 
@@ -28,4 +31,4 @@ python .\main.py
 
 or
 
-Run run.bat from Explorer
+Execute run.bat from Explorer
