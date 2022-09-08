@@ -1,12 +1,17 @@
-import pyautogui
 import time
+
+import pyautogui
+import win32com.client
 import win32gui
 
+lang = 'jp'
+
 tofApp = win32gui.FindWindow(None, 'Tower of Fantasy  ')
+shell = win32com.client.Dispatch("WScript.Shell")
+
+shell.SendKeys('%')
 win32gui.SetForegroundWindow(tofApp)
 time.sleep(1)
-
-lang = 'jp'
 
 print('Starts auto-leveling!')
 
@@ -39,7 +44,7 @@ while True:
 
     # 境界戦闘地帯
     while True:
-        tofApp = win32gui.FindWindow(None, 'Tower of Fantasy  ')
+        shell.SendKeys('%')
         win32gui.SetForegroundWindow(tofApp)
         battleZonePosition = pyautogui.locateOnScreen(f'./images/{lang}/frontier_clash.png' , confidence=0.7)
         if battleZonePosition is not None:
@@ -88,7 +93,7 @@ while True:
     time.sleep(25)
 
     while True:
-        tofApp = win32gui.FindWindow(None, 'Tower of Fantasy  ')
+        shell.SendKeys('%')
         win32gui.SetForegroundWindow(tofApp)
         print('Waiting for the combat to start...')
         if pyautogui.locateOnScreen(f'./images/{lang}/please_turn_on_mechanism.png' , confidence=0.7) is not None:
@@ -105,7 +110,7 @@ while True:
 
     # オートモードオン
     while True:
-        tofApp = win32gui.FindWindow(None, 'Tower of Fantasy  ')
+        shell.SendKeys('%')
         win32gui.SetForegroundWindow(tofApp)
         print('Waiting for auto mode to be activated...')
         if pyautogui.locateOnScreen(f'./images/{lang}/auto_on.png' , confidence=0.7) is not None:
@@ -122,7 +127,7 @@ while True:
 
     # 戦闘終了待ち
     while True:
-        tofApp = win32gui.FindWindow(None, 'Tower of Fantasy  ')
+        shell.SendKeys('%')
         win32gui.SetForegroundWindow(tofApp)
         print('In combat...')
         if pyautogui.locateOnScreen(f'./images/{lang}/skip.png' , confidence=0.7) is not None:
