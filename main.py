@@ -54,9 +54,9 @@ while True:
             break
         else:
             print("Can't find Frontier Crash, so I'll look for it")
-            bygonePhantasmPosition = pyautogui.locateOnScreen(f'./images/{lang}/bygone_phantasm.png' , confidence=0.7)
+            voidRiftsPosition = pyautogui.locateOnScreen(f'./images/{lang}/void_rifts.png' , confidence=0.7)
             trainingPosition = pyautogui.locateOnScreen(f'./images/{lang}/training.png' , confidence=0.7)
-            pyautogui.moveTo(bygonePhantasmPosition)
+            pyautogui.moveTo(voidRiftsPosition)
             pyautogui.dragTo(trainingPosition, duration=0.5, button="left")
             continue
 
@@ -122,7 +122,7 @@ while True:
             pyautogui.keyUp('altleft')
 
     print('In combat...')
-    time.sleep(420)
+    time.sleep(400)
     combatOverWaitStartTime = time.time()
 
     # 戦闘終了待ち
@@ -137,30 +137,33 @@ while True:
             continue
         time.sleep(5)
 
-    # 挑戦成功
+    # 宝箱
     while True:
         if pyautogui.locateOnScreen(f'./images/{lang}/tap_anywhere_to_close.png' , confidence=0.7) is not None:
             break
-        print('Skip Combat Results')
+        print('Skip Treasure')
         skipPosition = pyautogui.locateOnScreen(f'./images/{lang}/skip.png' , confidence=0.7)
         if skipPosition is not None:
             pyautogui.moveTo(skipPosition.left + 10, skipPosition.top, duration=0.5)
             pyautogui.click()
 
-    # 戦闘結果
+    # 挑戦成功
     while True:
-        if pyautogui.locateOnScreen('./images/commons/exit_result.png' , confidence=0.7) is not None:
+        if pyautogui.locateOnScreen('./images/commons/exit_combat_result.png' , confidence=0.7) is not None:
             break
-        tapAnywhereToClosePosition = pyautogui.locateOnScreen(f'./images/{lang}/tap_anywhere_to_close.png' , confidence=0.7)
-        if tapAnywhereToClosePosition is not None:
-            pyautogui.click(tapAnywhereToClosePosition.left, tapAnywhereToClosePosition.top - 50)
+        print('Skip Combat Results')
+        tapAnyWhereToClosePosition = pyautogui.locateOnScreen(f'./images/{lang}/tap_anywhere_to_close.png' , confidence=0.7)
+        if tapAnyWhereToClosePosition is not None:
+            pyautogui.moveTo(tapAnyWhereToClosePosition.left, tapAnyWhereToClosePosition.top - 30, duration=0.5)
+            pyautogui.click()
 
-    # 戦闘結果閉じる
+    # 戦闘結果
     while True:
         if pyautogui.locateOnScreen('./images/commons/exit_combat.png' , confidence=0.7) is not None:
             break
-        exitResultPosition = pyautogui.locateOnScreen('./images/commons/exit_result.png' , confidence=0.7)
-        pyautogui.click(exitResultPosition)
+        exitCombatResultPosition = pyautogui.locateOnScreen('./images/commons/exit_combat_result.png' , confidence=0.7)
+        if exitCombatResultPosition is not None:
+            pyautogui.click(exitCombatResultPosition.left, exitCombatResultPosition.top)
 
     # 退出
     while True:
