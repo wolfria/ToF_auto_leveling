@@ -46,10 +46,11 @@ while True:
     while True:
         shell.SendKeys('%')
         win32gui.SetForegroundWindow(tofApp)
-        battleZonePosition = pyautogui.locateOnScreen(f'./images/{lang}/frontier_clash.png' , confidence=0.7)
-        if battleZonePosition is not None:
+        frontierClashPosition = pyautogui.locateOnScreen(f'./images/{lang}/frontier_clash.png' , confidence=0.7)
+        print(frontierClashPosition)
+        if frontierClashPosition is not None:
             print('Looking for Frontier Crash')
-            pyautogui.click(battleZonePosition.left + 50, battleZonePosition.top + 420)
+            pyautogui.click(frontierClashPosition.left + 50, frontierClashPosition.top + 420)
             time.sleep(2)
             break
         else:
