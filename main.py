@@ -55,10 +55,10 @@ while True:
             break
         else:
             print("Can't find Frontier Crash, so I'll look for it")
-            voidRiftsPosition = pyautogui.locateOnScreen(f'./images/{lang}/void_rifts.png' , confidence=0.7)
             trainingPosition = pyautogui.locateOnScreen(f'./images/{lang}/training.png' , confidence=0.7)
-            pyautogui.moveTo(voidRiftsPosition)
-            pyautogui.dragTo(trainingPosition, duration=0.5, button="left")
+            pyautogui.moveTo(trainingPosition)
+            print(trainingPosition.left)
+            pyautogui.dragTo(trainingPosition.left - 300, trainingPosition.top, duration=0.5, button="left")
             continue
 
     # join
