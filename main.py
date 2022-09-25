@@ -92,22 +92,6 @@ while True:
     print('Waiting for the combat to start...')
     time.sleep(25)
 
-    while True:
-        shell.SendKeys('%')
-        win32gui.SetForegroundWindow(tofApp)
-        print('Waiting for the combat to start...')
-        if pyautogui.locateOnScreen(f'./images/{lang}/please_turn_on_mechanism.png' , confidence=0.7) is not None:
-            break
-        elif pyautogui.locateOnScreen(f'./images/{lang}/synced_to_assistance_system.png' , confidence=0.7) is not None:
-            break
-        elif pyautogui.locateOnScreen(f'./images/{lang}/first_wave_arrives.png' , confidence=0.7) is not None:
-            break
-        elif pyautogui.locateOnScreen(f'./images/{lang}/tap_anywhere_to_close.png' , confidence=0.7) is not None:
-            print('Challenge failed')
-            time.sleep(25)
-            continue
-        time.sleep(0.7)
-
     # オートモードオン
     while True:
         shell.SendKeys('%')
@@ -120,6 +104,22 @@ while True:
             autoOffPosition = pyautogui.locateOnScreen(f'./images/{lang}/auto_off.png' , confidence=0.7)
             pyautogui.click(autoOffPosition)
             pyautogui.keyUp('altleft')
+
+    # 戦闘開始待ち
+    while True:
+        shell.SendKeys('%')
+        win32gui.SetForegroundWindow(tofApp)
+        print('Waiting for the combat to start...')
+        if pyautogui.locateOnScreen(f'./images/{lang}/synced_to_assistance_system.png' , confidence=0.7) is not None:
+            break
+        elif pyautogui.locateOnScreen(f'./images/{lang}/first_wave_arrives.png' , confidence=0.7) is not None:
+            break
+        elif pyautogui.locateOnScreen(f'./images/{lang}/tap_anywhere_to_close.png' , confidence=0.7) is not None:
+            print('Challenge failed')
+            print('Next...')
+            time.sleep(25)
+            continue
+        time.sleep(0.7)
 
     print('In combat...')
     time.sleep(400)
