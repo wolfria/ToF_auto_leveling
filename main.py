@@ -16,7 +16,7 @@ time.sleep(1)
 print('Starts auto-leveling!')
 
 while True:
-    # 探検
+    # adventure
     while True:
         if pyautogui.locateOnScreen(f'./images/en/adventure.png' , confidence=0.5) is not None:
             lang = 'en'
@@ -31,7 +31,7 @@ while True:
                 pyautogui.click(adventurePosition)
             time.sleep(1)
 
-    # 挑戦
+    # challenge
     while True:
         if pyautogui.locateOnScreen(f'./images/{lang}/challenge_active.png' , confidence=0.7) is not None:
             break
@@ -42,7 +42,7 @@ while True:
             pyautogui.click(challengePosition)
             time.sleep(1)
 
-    # 境界戦闘地帯
+    # frontier clash
     while True:
         shell.SendKeys('%')
         win32gui.SetForegroundWindow(tofApp)
@@ -60,7 +60,7 @@ while True:
             pyautogui.dragTo(trainingPosition, duration=0.5, button="left")
             continue
 
-    # 参加
+    # join
     print("Participate in Frontier Clash")
     battleZoneGoPosition = pyautogui.locateOnScreen(f'./images/{lang}/frontier_clash_go.png' , confidence=0.7)
     pyautogui.click(battleZoneGoPosition)
@@ -68,7 +68,7 @@ while True:
 
     while pyautogui.locateOnScreen(f'./images/{lang}/jump_device_is_starting.png' , confidence=0.7) is None:
         print('Waiting for matching...')
-        # マッチング
+        # matching
         matchPosition = pyautogui.locateOnScreen(f'./images/{lang}/match.png' , confidence=0.7)
         if matchPosition is not None:
             pyautogui.click(matchPosition)
@@ -82,7 +82,7 @@ while True:
                 break
             time.sleep(1)
 
-        # 同意
+        # approve
         approvePosition = pyautogui.locateOnScreen(f'./images/{lang}/approve.png' , confidence=0.7)
         if approvePosition is not None:
             pyautogui.click(approvePosition)
@@ -92,7 +92,7 @@ while True:
     print('Waiting for the combat to start...')
     time.sleep(25)
 
-    # オートモードオン
+    # auto mode on
     while True:
         shell.SendKeys('%')
         win32gui.SetForegroundWindow(tofApp)
@@ -105,7 +105,7 @@ while True:
             pyautogui.click(autoOffPosition)
             pyautogui.keyUp('altleft')
 
-    # 戦闘開始待ち
+    # combat to start
     while True:
         shell.SendKeys('%')
         win32gui.SetForegroundWindow(tofApp)
@@ -125,7 +125,7 @@ while True:
     time.sleep(400)
     combatOverWaitStartTime = time.time()
 
-    # 戦闘終了待ち
+    # wait combat over
     while True:
         shell.SendKeys('%')
         win32gui.SetForegroundWindow(tofApp)
@@ -137,7 +137,7 @@ while True:
             continue
         time.sleep(5)
 
-    # 宝箱
+    # treasure result
     while True:
         if pyautogui.locateOnScreen(f'./images/{lang}/tap_anywhere_to_close.png' , confidence=0.7) is not None:
             break
@@ -147,7 +147,7 @@ while True:
             pyautogui.moveTo(skipPosition.left + 10, skipPosition.top, duration=0.5)
             pyautogui.click()
 
-    # 挑戦成功
+    # challenge success
     while True:
         if pyautogui.locateOnScreen('./images/commons/exit_combat_result.png' , confidence=0.7) is not None:
             break
@@ -157,7 +157,7 @@ while True:
             pyautogui.moveTo(tapAnyWhereToClosePosition.left, tapAnyWhereToClosePosition.top - 30, duration=0.5)
             pyautogui.click()
 
-    # 戦闘結果
+    # combat over
     while True:
         if pyautogui.locateOnScreen('./images/commons/exit_combat.png' , confidence=0.7) is not None:
             break
@@ -165,7 +165,7 @@ while True:
         if exitCombatResultPosition is not None:
             pyautogui.click(exitCombatResultPosition.left, exitCombatResultPosition.top)
 
-    # 退出
+    # exit combat
     while True:
         if pyautogui.locateOnScreen(f'./images/{lang}/ok.png' , confidence=0.7) is not None:
             break
