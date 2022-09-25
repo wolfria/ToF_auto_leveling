@@ -1,7 +1,4 @@
 # ToF_auto_leveling
-**Currently does not work with the latest version due to updates.**  
-**This will be fixed soon.**  
-
 This tool is a script for automatically circling Frontier Crash of 'Tower of Fantasy'.  
 The author assumes no responsibility for the use of this tool.  
 Use at your own risk.
@@ -9,7 +6,7 @@ Use at your own risk.
 JP or En Only
 
 ## operating environment
-
+version: `1.5.2`  
 resolution: `1366x768`  
 language: `JP` or `EN`
 
