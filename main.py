@@ -98,7 +98,7 @@ while True:
         shell.SendKeys('%')
         win32gui.SetForegroundWindow(tofApp)
         print('Waiting for auto mode to be activated...')
-        if pyautogui.locateOnScreen(f'./images/{lang}/auto_on.png' , confidence=0.7) is not None:
+        if pyautogui.locateOnScreen(f'./images/{lang}/auto_on.png' , confidence=0.8) is not None:
             break
         else: 
             pyautogui.keyDown('altleft')
@@ -107,10 +107,18 @@ while True:
             pyautogui.keyUp('altleft')
 
     # combat to start
+    shell.SendKeys('%')
+    win32gui.SetForegroundWindow(tofApp)
+    pyautogui.keyDown('w')
+    time.sleep(2.5)
+    pyautogui.keyUp('w')
+    pyautogui.keyDown('a')
+    time.sleep(3)
+    pyautogui.keyUp('a')
     while True:
-        shell.SendKeys('%')
-        win32gui.SetForegroundWindow(tofApp)
-        print('Waiting for the combat to start...')
+        if pyautogui.locateOnScreen(f'./images/{lang}/activate.png' , confidence=0.7) is not None:
+            pyautogui.press('f', presses=5)
+            break
         if pyautogui.locateOnScreen(f'./images/{lang}/synced_to_assistance_system.png' , confidence=0.7) is not None:
             break
         elif pyautogui.locateOnScreen(f'./images/{lang}/first_wave_arrives.png' , confidence=0.7) is not None:
@@ -120,7 +128,12 @@ while True:
             print('Next...')
             time.sleep(25)
             continue
-        time.sleep(0.7)
+        shell.SendKeys('%')
+        win32gui.SetForegroundWindow(tofApp)
+        pyautogui.keyDown('w')
+        time.sleep(0.5)
+        pyautogui.keyUp('w')
+        pyautogui.move(0, 5)
 
     print('In combat...')
     time.sleep(400)
