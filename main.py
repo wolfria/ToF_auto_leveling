@@ -83,6 +83,17 @@ while True:
                 break
             time.sleep(1)
 
+        uncheckAssistPosition = pyautogui.locateOnScreen('./images/commons/assist_uncheck.png' , confidence=0.8)
+        if uncheckAssistPosition is not None:
+            print('found uncheck assist mod')
+            while True:
+                if pyautogui.locateOnScreen('./images/commons/assist_checked.png' , confidence=0.8) is not None:
+                    break
+                pyautogui.moveTo(uncheckAssistPosition.left + 10, uncheckAssistPosition.top + 10, duration=0.5)
+                pyautogui.click()
+            print('assist mod checked')
+            time.sleep(1)
+
         # approve
         approvePosition = pyautogui.locateOnScreen(f'./images/{lang}/approve.png' , confidence=0.7)
         if approvePosition is not None:
@@ -99,6 +110,7 @@ while True:
         win32gui.SetForegroundWindow(tofApp)
         print('Waiting for auto mode to be activated...')
         if pyautogui.locateOnScreen(f'./images/{lang}/auto_on.png' , confidence=0.7) is not None:
+            print('auto mode activated!')
             break
         else: 
             pyautogui.keyDown('altleft')
@@ -107,6 +119,14 @@ while True:
             pyautogui.keyUp('altleft')
 
     # combat to start
+    shell.SendKeys('%')
+    win32gui.SetForegroundWindow(tofApp)
+    pyautogui.keyDown('w')
+    time.sleep(3)
+    pyautogui.keyUp('w')
+    pyautogui.keyDown('a')
+    time.sleep(3)
+    pyautogui.keyUp('a')
     while True:
         shell.SendKeys('%')
         win32gui.SetForegroundWindow(tofApp)
@@ -121,6 +141,12 @@ while True:
             time.sleep(25)
             continue
         time.sleep(0.7)
+        shell.SendKeys('%')
+        win32gui.SetForegroundWindow(tofApp)
+        pyautogui.keyDown('w')
+        time.sleep(0.5)
+        pyautogui.keyUp('w')
+        pyautogui.move(0, 10)
 
     print('In combat...')
     time.sleep(400)
