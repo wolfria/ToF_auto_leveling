@@ -3,6 +3,8 @@ This tool is a script for automatically circling Frontier Crash of 'Tower of Fan
 The author assumes no responsibility for the use of this tool.  
 Use at your own risk.
 
+The automatic switch-on feature is imperfect, so do not overconfidently trust it.
+
 JP or En Only
 
 ## operating environment
