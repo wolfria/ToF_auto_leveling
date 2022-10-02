@@ -47,7 +47,6 @@ while True:
         shell.SendKeys('%')
         win32gui.SetForegroundWindow(tofApp)
         frontierClashPosition = pyautogui.locateOnScreen(f'./images/{lang}/frontier_clash.png' , confidence=0.7)
-        print(frontierClashPosition)
         if frontierClashPosition is not None:
             print('Looking for Frontier Crash')
             pyautogui.click(frontierClashPosition.left + 50, frontierClashPosition.top + 420)
@@ -91,7 +90,7 @@ while True:
                     break
                 pyautogui.moveTo(uncheckAssistPosition.left + 10, uncheckAssistPosition.top + 10, duration=0.5)
                 pyautogui.click()
-            print('assist mod checked')
+            print('assist mod checked!')
             time.sleep(1)
 
         # approve
